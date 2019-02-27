@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/supamii/QttpServer.svg?branch=master)](https://travis-ci.org/supamii/QttpServer)
 
-# QttpServer 1.0.0
+# QttpServer 1.0.0 - forked adiel
 
 QttpServer focuses on developing a lean and mean C++ based API server. In addition to leveraging
 modern C++, QttpServer also employs Qt to promote productivity and reinforce best practices. Use it
