@@ -87,7 +87,7 @@ bool stream::write(const char* buf, int len, std::function<void(error)> callback
 
 bool stream::write(const std::string& buf, std::function<void(error)> callback)
 {
-  uv_buf_t bufs[] = CREATE_UVBUF(buf.length(), buf.c_str());
+  uv_buf_t bufs[] = CREATE_UVBUF((unsigned long)buf.length(), buf.c_str());
   callbacks::store(get()->data, native::internal::uv_cid_write, callback);
   return uv_write(new uv_write_t, get<uv_stream_t>(), bufs, 1, [](uv_write_t* req, int status) {
     callbacks::invoke<decltype(callback)>(req->handle->data, native::internal::uv_cid_write, ((status != 0) ? error(status) : error()));
@@ -97,7 +97,7 @@ bool stream::write(const std::string& buf, std::function<void(error)> callback)
 
 bool stream::write(const std::vector<char>& buf, std::function<void(error)> callback)
 {
-  uv_buf_t bufs[] = CREATE_UVBUF(buf.size(), &buf[0]);
+  uv_buf_t bufs[] = CREATE_UVBUF((unsigned long)buf.size(), &buf[0]);
   callbacks::store(get()->data, native::internal::uv_cid_write, callback);
   return uv_write(new uv_write_t, get<uv_stream_t>(), bufs, 1, [](uv_write_t* req, int status) {
     callbacks::invoke<decltype(callback)>(req->handle->data, native::internal::uv_cid_write, ((status != 0) ? error(status) : error()));
