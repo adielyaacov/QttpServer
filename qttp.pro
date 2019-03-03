@@ -25,6 +25,7 @@ contains(CONFIG, SAMPLEAPP) {
     }
 
     DEFINES += QTTP_LIBRARY QTTP_EXPORT
+    CONFIG += QTTP_SHARED_LIBRARY
 
     contains(CONFIG, QTTP_SHARED_LIBRARY) {
         message(********* Building shared library qttpserver *********)
