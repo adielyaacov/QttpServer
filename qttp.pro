@@ -39,17 +39,10 @@ contains(CONFIG, SAMPLEAPP) {
     }
 
     CONFIG(debug, debug|release) {
-        win32 {
-            DESTDIR = $$PWD/build/Debug/lib
-        } else {
-            DESTDIR = $$PWD/build/out/Debug
-        }
-    } else {
-        win32 {
-            DESTDIR = $$PWD/build/Release/lib
-        } else {
-            DESTDIR = $$PWD/build/out/Release
-        }
+      DESTDIR = $$top_builddir/debug
+    }
+    CONFIG(release, debug|release) {
+      DESTDIR = $$top_builddir/release
     }
 }
 

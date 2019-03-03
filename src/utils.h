@@ -284,7 +284,7 @@ class QTTPSHARED_EXPORT Utils
 
     static inline QByteArray toByteArray(const std::string& str)
     {
-      return QByteArray(str.c_str(), str.length());
+      return QByteArray(str.c_str(), (int)str.length());
     }
 
     static inline QByteArray toByteArray(const std::stringstream& buffer)

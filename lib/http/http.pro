@@ -17,25 +17,12 @@ DEFINES += NNATIVE_ERROR_LOGGING
 include($$PWD/http.pri)
 
 CONFIG(debug, debug|release) {
-    win32 {
-        DESTDIR = $$PWD/../../build/Debug/lib
-    } else {
-        DESTDIR = $$PWD/../../build/out/Debug
-    }
-} else {
-    win32 {
-        DESTDIR = $$PWD/../../build/Release/lib
-    } else {
-        DESTDIR = $$PWD/../../build/out/Release
-    }
+  DESTDIR = $$top_builddir/debug
+  OTHER_FILES += $$top_builddir/debug/*
 }
-
-CONFIG(debug, debug|release) {
-    OTHER_FILES += $$PWD/../../build/Debug/lib/*
-    OTHER_FILES += $$PWD/../../build/out/Debug/*
-} else {
-    OTHER_FILES += $$PWD/../../build/Release/lib/*
-    OTHER_FILES += $$PWD/../../build/out/Release/*
+CONFIG(release, debug|release) {
+  DESTDIR = $$top_builddir/release
+  OTHER_FILES += $$top_builddir/release/*
 }
 
 macx: {
